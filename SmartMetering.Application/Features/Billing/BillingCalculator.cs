@@ -1,5 +1,4 @@
 using SmartMetering.Domain.Entities;
-using System;
 
 namespace SmartMetering.Application.Features.Billing;
 

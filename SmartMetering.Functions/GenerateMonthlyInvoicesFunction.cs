@@ -2,8 +2,6 @@ using MediatR;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using SmartMetering.Application.Features.Billing.GenerateInvoices;
-using System.Threading.Tasks;
-using System;
 
 namespace SmartMetering.Functions;
 

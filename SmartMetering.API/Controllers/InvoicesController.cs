@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using SmartMetering.Application.Features.Invoices.DownloadInvoiceDocument;
 using SmartMetering.Application.Features.Invoices.GetConsumerInvoices;
 using SmartMetering.Application.Features.Invoices.GetInvoiceById;
-using System.Threading.Tasks;
-using System;
 
 namespace SmartMetering.API.Controllers;
 

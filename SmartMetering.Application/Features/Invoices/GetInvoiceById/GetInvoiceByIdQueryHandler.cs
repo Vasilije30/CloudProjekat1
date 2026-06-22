@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using SmartMetering.Application.Interfaces;
 using SmartMetering.Contracts.Invoices;
 using SmartMetering.Domain.Common;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace SmartMetering.Application.Features.Invoices.GetInvoiceById;
 

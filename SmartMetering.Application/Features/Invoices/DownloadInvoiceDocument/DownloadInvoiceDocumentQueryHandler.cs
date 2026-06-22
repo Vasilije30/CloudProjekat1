@@ -2,10 +2,6 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SmartMetering.Application.Interfaces;
 using SmartMetering.Domain.Common;
-using System.IO;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
 
 namespace SmartMetering.Application.Features.Invoices.DownloadInvoiceDocument;
 

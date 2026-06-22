@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace SmartMetering.Contracts.Invoices;
 
 public record InvoiceListResponse(

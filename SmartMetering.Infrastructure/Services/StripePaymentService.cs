@@ -16,7 +16,7 @@ public class StripePaymentService : IPaymentService
         StripeConfiguration.ApiKey = _settings.SecretKey;
     }
 
-    public async Task<string> CreateCheckoutSessionAsync(
+    public async Task<(string SessionId, string CheckoutUrl)> CreateCheckoutSessionAsync(
         Guid invoiceId,
         decimal amount,
         string description,
@@ -54,6 +54,22 @@ public class StripePaymentService : IPaymentService
         var service = new SessionService();
         var session = await service.CreateAsync(options);
 
-        return session.Id;
+        return (session.Id, session.Url);
+    }
+
+    public Task<WebhookPaymentResult?> VerifyAndExtractPaymentAsync(string payload, string signature)
+    {
+        var stripeEvent = EventUtility.ConstructEvent(
+            payload, signature, _settings.WebhookSecret);
+
+        if (stripeEvent.Type != EventTypes.CheckoutSessionCompleted)
+            return Task.FromResult<WebhookPaymentResult?>(null);
+
+        var session = stripeEvent.Data.Object as Session;
+        if (session is null)
+            return Task.FromResult<WebhookPaymentResult?>(null);
+
+        var result = new WebhookPaymentResult(session.Id, session.PaymentIntentId);
+        return Task.FromResult<WebhookPaymentResult?>(result);
     }
 }

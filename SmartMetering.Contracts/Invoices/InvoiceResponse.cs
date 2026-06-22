@@ -1,5 +1,3 @@
-using System;
-
 namespace SmartMetering.Contracts.Invoices;
 
 public record InvoiceResponse(
